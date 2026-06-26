@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 const HORARIOS = ["10:30", "12:00", "13:30"] as const;
 const UNIVERSIDADES = ["ETSI", "FCOM", "DTX", "CESUR", "Otros"] as const;
@@ -26,6 +26,10 @@ export default function RegistrationForm({
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [touched, setTouched] = useState(false);
+
+  // ids únicos por instancia (puede haber varios formularios en la página)
+  const uid = useId();
+  const fid = (name: string) => `${uid}-${name}`;
 
   const horarioInvalid = touched && !horario;
 
@@ -115,11 +119,11 @@ export default function RegistrationForm({
       <div className="grid gap-5">
         {/* Nombre */}
         <div>
-          <label htmlFor="nombre" className="mb-1.5 block text-sm font-semibold text-aubergine">
+          <label htmlFor={fid("nombre")} className="mb-1.5 block text-sm font-semibold text-aubergine">
             Nombre y apellidos
           </label>
           <input
-            id="nombre"
+            id={fid("nombre")}
             name="nombre"
             type="text"
             required
@@ -134,11 +138,11 @@ export default function RegistrationForm({
         {/* Teléfono + Email */}
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="telefono" className="mb-1.5 block text-sm font-semibold text-aubergine">
+            <label htmlFor={fid("telefono")} className="mb-1.5 block text-sm font-semibold text-aubergine">
               Teléfono
             </label>
             <input
-              id="telefono"
+              id={fid("telefono")}
               name="telefono"
               type="tel"
               required
@@ -151,11 +155,11 @@ export default function RegistrationForm({
             />
           </div>
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-aubergine">
+            <label htmlFor={fid("email")} className="mb-1.5 block text-sm font-semibold text-aubergine">
               Correo electrónico
             </label>
             <input
-              id="email"
+              id={fid("email")}
               name="email"
               type="email"
               required
@@ -202,11 +206,11 @@ export default function RegistrationForm({
 
         {/* Universidad */}
         <div>
-          <label htmlFor="universidad" className="mb-1.5 block text-sm font-semibold text-aubergine">
+          <label htmlFor={fid("universidad")} className="mb-1.5 block text-sm font-semibold text-aubergine">
             ¿Dónde vas a estudiar?
           </label>
           <select
-            id="universidad"
+            id={fid("universidad")}
             name="universidad"
             required
             value={universidad}

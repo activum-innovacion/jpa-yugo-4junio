@@ -166,23 +166,18 @@ export default function Home() {
       </section>
 
       {/* ============ CTA FINAL ============ */}
-      <section className="bg-coral py-16 text-white sm:py-20">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
+      <section className="bg-coral py-16 sm:py-20">
+        <div className="mx-auto max-w-xl px-5 sm:px-8">
           <Reveal>
-            <h2 className="text-3xl font-bold sm:text-4xl">
+            <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">
               ¿Vienes a conocer tu nuevo hogar?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-white/90">
-              Reserva tu visita para el sábado 4 de julio. Las plazas son
-              limitadas, así que no lo dejes para el último momento.
-            </p>
-            <a
-              href="#reserva"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-coral shadow-xl transition hover:bg-cream"
-            >
-              Reservar visita
-              <ArrowIcon />
-            </a>
+            <div className="mt-8">
+              <RegistrationForm
+                heading="Reserva tu visita"
+                subheading="Sábado 4 de julio · Plazas limitadas"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -275,10 +270,3 @@ function PinIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  );
-}
