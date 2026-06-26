@@ -265,7 +265,7 @@ export default function RegistrationForm({
         </button>
 
         <p className="text-center text-xs text-aubergine/40">
-          Plazas limitadas · Recibirás la confirmación por email
+          Plazas limitadas
         </p>
       </div>
     </form>

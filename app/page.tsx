@@ -11,26 +11,6 @@ const ESPACIOS = [
   { src: "/images/habitacion-2.jpg", titulo: "Tu nuevo hogar", desc: "Listo para que solo tengas que llegar y vivir" },
 ];
 
-const HIGHLIGHTS = [
-  { num: "232", label: "habitaciones individuales con baño y cocina" },
-  { num: "0", label: "preocupaciones: agua, luz y gas incluidos" },
-  { num: "24/7", label: "recepción y seguridad en la residencia" },
-  { num: "1", label: "ubicación inmejorable, en pleno campus" },
-];
-
-const SERVICIOS = [
-  "Piscina y terrazas",
-  "Gimnasio",
-  "Cine",
-  "Sala de juegos",
-  "Salas de estudio",
-  "Cafetería",
-  "Lavandería",
-  "Wifi de alta velocidad",
-  "Limpieza periódica",
-  "En pleno campus universitario",
-];
-
 export default function Home() {
   return (
     <main className="overflow-x-hidden">
@@ -195,45 +175,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ============ POR QUÉ YUGO ============ */}
-      <section className="bg-aubergine py-20 text-white sm:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              Mucho más que una habitación
-            </h2>
-            <p className="mt-4 text-lg text-white/70">
-              Una residencia nueva, en pleno campus, con todo lo que necesitas
-              para vivir tu etapa universitaria al máximo.
-            </p>
-          </Reveal>
-
-          <Reveal className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {HIGHLIGHTS.map((h) => (
-              <div key={h.label} className="text-center">
-                <div className="font-display text-5xl font-extrabold text-amber">
-                  {h.num}
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-white/75">
-                  {h.label}
-                </p>
-              </div>
-            ))}
-          </Reveal>
-
-          <Reveal className="mt-16 flex flex-wrap justify-center gap-3">
-            {SERVICIOS.map((s) => (
-              <span
-                key={s}
-                className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/15"
-              >
-                {s}
-              </span>
-            ))}
-          </Reveal>
         </div>
       </section>
 
