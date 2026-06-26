@@ -183,32 +183,59 @@ export default function Home() {
       </section>
 
       {/* ============ FOOTER ============ */}
-      <footer className="bg-aubergine-deep py-14 text-white/80">
+      <footer className="bg-lilac-bg py-12 sm:py-14">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-            <div>
+          <div className="grid items-center gap-10 md:grid-cols-3">
+            {/* Logos */}
+            <div className="flex items-center gap-5">
               <Image
-                src="/yugo-logo-white.png"
+                src="/yugo-circle.png"
                 alt="Yugo"
-                width={155}
-                height={68}
-                className="h-9 w-auto"
+                width={238}
+                height={238}
+                className="h-14 w-14"
               />
-              <p className="mt-4 max-w-sm text-sm text-white/60">
-                Yugo Cartuja · Residencia de estudiantes en Sevilla. Comienza
-                extraordinario.
-              </p>
+              <Image
+                src="/straco.png"
+                alt="Straco Real Estate"
+                width={517}
+                height={92}
+                className="h-7 w-auto"
+              />
             </div>
-            <div className="text-sm">
-              <p className="font-semibold text-white">Yugo Cartuja</p>
-              <p className="mt-2 text-white/60">
-                C. Francisco de Xerez
-                <br />
-                41092 Sevilla
+
+            {/* Colaborador */}
+            <div className="flex flex-col items-center">
+              <span className="text-sm font-medium text-aubergine/50">
+                Colaborador
+              </span>
+              <Image
+                src="/activum.png"
+                alt="Activum"
+                width={674}
+                height={567}
+                className="mt-2 h-12 w-auto"
+              />
+            </div>
+
+            {/* Contacto */}
+            <div className="md:text-right">
+              <span className="text-sm font-medium text-aubergine/50">
+                Contacto
+              </span>
+              <a
+                href="tel:+34854564369"
+                className="mt-1 block text-2xl font-extrabold tracking-tight text-aubergine transition hover:text-coral"
+              >
+                854 564 369
+              </a>
+              <p className="mt-1 font-bold text-aubergine">
+                C. Francisco de Xerez, 41092 Sevilla
               </p>
             </div>
           </div>
-          <div className="mt-10 border-t border-white/10 pt-6 text-xs text-white/45">
+
+          <div className="mt-10 border-t border-aubergine/10 pt-6 text-center text-xs text-aubergine/40">
             © {new Date().getFullYear()} Yugo Cartuja · Jornada de Puertas Abiertas
           </div>
         </div>
