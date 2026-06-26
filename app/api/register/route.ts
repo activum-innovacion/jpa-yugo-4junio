@@ -4,15 +4,33 @@ export const runtime = "nodejs";
 
 const MONDAY_API_URL = "https://api.monday.com/v2";
 
-// Columnas del tablero "JPA 4 Junio" (board 5099259590)
+// Columnas del tablero "Leads" (board 5098228821)
 const COLUMN_IDS = {
-  telefono: "phone_mm4pnqyh",
-  email: "email_mm4pmf8v",
-  horario: "dropdown_mm4pn6jb",
-  universidad: "dropdown_mm4pwqm8",
+  telefono: "phone_mm3q9rmk", // Teléfono
+  email: "email_mm3q9xk", // E-mail
+  visita: "date_mm3qtz5n", // Fecha y hora inicio visita
+  centroEstudios: "dropdown_mm3qh2w7", // Centro Estudios
+  tipoGestion: "color_mm3qmhtv", // Tipo de gestión (status)
+  origenContacto: "color_mm3qd8bq", // Origen del contacto (status)
 } as const;
 
-const HORARIOS = ["10:30", "12:00", "13:30"];
+// Valores por defecto para todos los leads de la JPA
+const DEFAULT_TIPO_GESTION = "Mail";
+const DEFAULT_ORIGEN_CONTACTO = "JPA";
+
+// Fecha del evento (Sábado 4 de julio de 2026)
+const EVENT_DATE = "2026-07-04";
+
+// La API de monday interpreta la hora como UTC y la muestra en la zona horaria
+// de la cuenta. En julio España es CEST (UTC+2), así que enviamos la hora en UTC
+// para que se vea correctamente la hora local de la visita.
+const HORARIO_TO_UTC: Record<string, string> = {
+  "10:30": "08:30:00",
+  "12:00": "10:00:00",
+  "13:30": "11:30:00",
+};
+
+const HORARIOS = Object.keys(HORARIO_TO_UTC);
 const UNIVERSIDADES = ["ETSI", "FCOM", "DTX", "CESUR", "Otros"];
 
 type Payload = {
@@ -57,8 +75,8 @@ export async function POST(request: Request) {
   const uni = UNIVERSIDADES.includes(universidad) ? universidad : "Otros";
 
   const token = process.env.MONDAY_API_TOKEN;
-  const boardId = process.env.MONDAY_BOARD_ID || "5099259590";
-  const groupId = process.env.MONDAY_GROUP_ID || "topics";
+  const boardId = process.env.MONDAY_BOARD_ID || "5098228821";
+  const groupId = process.env.MONDAY_GROUP_ID || "group_mm3qza6n";
 
   if (!token) {
     console.error("[register] Falta la variable de entorno MONDAY_API_TOKEN");
@@ -73,10 +91,14 @@ export async function POST(request: Request) {
   const columnValues = {
     [COLUMN_IDS.telefono]: { phone: phoneDigits, countryShortName: "ES" },
     [COLUMN_IDS.email]: { email, text: email },
-    [COLUMN_IDS.horario]: { labels: [horario] },
-    [COLUMN_IDS.universidad]: { labels: [uni] },
+    [COLUMN_IDS.visita]: { date: EVENT_DATE, time: HORARIO_TO_UTC[horario] },
+    [COLUMN_IDS.centroEstudios]: { labels: [uni] },
+    [COLUMN_IDS.tipoGestion]: { label: DEFAULT_TIPO_GESTION },
+    [COLUMN_IDS.origenContacto]: { label: DEFAULT_ORIGEN_CONTACTO },
   };
 
+  // create_labels_if_missing crea las etiquetas ETSI/FCOM/DTX/CESUR/Otros en
+  // "Centro Estudios" si aún no existen.
   const query = `
     mutation CreateLead($boardId: ID!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
       create_item(
@@ -84,7 +106,7 @@ export async function POST(request: Request) {
         group_id: $groupId,
         item_name: $itemName,
         column_values: $columnValues,
-        create_labels_if_missing: false
+        create_labels_if_missing: true
       ) { id }
     }
   `;
