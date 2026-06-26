@@ -90,10 +90,10 @@ export default function Home() {
               Te invitamos a conocer Yugo Cartuja
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-aubergine/75">
-              Durante nuestra jornada de puertas abiertas podrás visitar las
-              habitaciones, descubrir todos los espacios comunes, conocer el
-              ambiente de la residencia y resolver cualquier duda sobre tu futura
-              experiencia universitaria.
+              Durante esta jornada de puertas abiertas conocerás tu próxima
+              residencia de estudiantes. Las plazas son limitadas, te
+              recomendamos reservar tu horario cuanto antes para poder organizar
+              las visitas y atenderte de la mejor manera posible.
             </p>
           </Reveal>
         </div>
@@ -118,15 +118,6 @@ export default function Home() {
               label="Horarios disponibles"
               value="10:30 · 12:00 · 13:30 h"
             />
-          </Reveal>
-
-          <Reveal className="mt-6 flex items-start gap-3 rounded-xl2 bg-amber/15 px-6 py-5 ring-1 ring-amber/30">
-            <span className="mt-0.5 text-xl">⚠️</span>
-            <p className="text-aubergine">
-              <strong>Las plazas son limitadas.</strong> Te recomendamos reservar
-              tu horario cuanto antes para poder organizar las visitas y atenderte
-              de la mejor manera posible.
-            </p>
           </Reveal>
         </div>
       </section>
