@@ -38,6 +38,7 @@ el tablero mediante la API de monday. Configura estas variables de entorno:
 | Universidad | Centro Estudios | `dropdown_mm3qh2w7` |
 | _(constante)_ Tipo de gestión = **Mail** | Tipo de gestión | `color_mm3qmhtv` |
 | _(constante)_ Origen del contacto = **JPA** | Origen del contacto | `color_mm3qd8bq` |
+| _(constante)_ Estado Lead = **Lead Nuevo** | Estado Lead | `color_mm3qa08v` |
 
 > El horario se guarda como fecha+hora del **4 de julio de 2026**. La hora se
 > envía en UTC (la cuenta de monday es CEST/UTC+2 en julio) para que se muestre

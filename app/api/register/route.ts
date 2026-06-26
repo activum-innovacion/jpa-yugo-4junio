@@ -12,11 +12,13 @@ const COLUMN_IDS = {
   centroEstudios: "dropdown_mm3qh2w7", // Centro Estudios
   tipoGestion: "color_mm3qmhtv", // Tipo de gestión (status)
   origenContacto: "color_mm3qd8bq", // Origen del contacto (status)
+  estadoLead: "color_mm3qa08v", // Estado Lead (status)
 } as const;
 
 // Valores por defecto para todos los leads de la JPA
 const DEFAULT_TIPO_GESTION = "Mail";
 const DEFAULT_ORIGEN_CONTACTO = "JPA";
+const DEFAULT_ESTADO_LEAD = "Lead Nuevo";
 
 // Fecha del evento (Sábado 4 de julio de 2026)
 const EVENT_DATE = "2026-07-04";
@@ -95,6 +97,7 @@ export async function POST(request: Request) {
     [COLUMN_IDS.centroEstudios]: { labels: [uni] },
     [COLUMN_IDS.tipoGestion]: { label: DEFAULT_TIPO_GESTION },
     [COLUMN_IDS.origenContacto]: { label: DEFAULT_ORIGEN_CONTACTO },
+    [COLUMN_IDS.estadoLead]: { label: DEFAULT_ESTADO_LEAD },
   };
 
   // create_labels_if_missing crea las etiquetas ETSI/FCOM/DTX/CESUR/Otros en
