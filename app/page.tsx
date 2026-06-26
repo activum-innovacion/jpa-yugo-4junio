@@ -49,13 +49,13 @@ export default function Home() {
             href="#reserva"
             className="rounded-full bg-white/15 px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/40 backdrop-blur transition hover:bg-white hover:text-aubergine"
           >
-            Reservar plaza
+            Reservar visita
           </a>
         </div>
       </header>
 
       {/* ============ HERO ============ */}
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden">
+      <section className="relative flex min-h-screen items-center overflow-hidden">
         <Image
           src="/images/terraza.jpg"
           alt="Terraza de Yugo Cartuja en Sevilla con estudiantes"
@@ -66,19 +66,18 @@ export default function Home() {
         />
         <div className="hero-overlay absolute inset-0" />
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 sm:px-8 sm:pb-24">
-          <div className="max-w-2xl">
+        <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-5 pb-14 pt-28 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:pb-20 lg:pt-32">
+          {/* Texto */}
+          <div className="max-w-xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-coral px-4 py-1.5 text-sm font-semibold text-white shadow-lg">
               Jornada de Puertas Abiertas
             </span>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] text-white drop-shadow-sm sm:text-6xl">
-              Puertas Abiertas en
-              <br />
-              Yugo Cartuja
+              Te esperamos el 4 de julio
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-white/90 sm:text-xl">
-              ¿Estás buscando dónde vivir durante tu etapa universitaria? Ven a
-              descubrir tu posible nuevo hogar en Sevilla.
+            <p className="mt-5 max-w-lg text-lg text-white/90 drop-shadow-sm sm:text-xl">
+              Ven a conocer Yugo Cartuja, tu posible nuevo hogar durante la etapa
+              universitaria en Sevilla.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
@@ -86,20 +85,20 @@ export default function Home() {
                 <CalendarIcon /> Sábado 4 de julio
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/30 backdrop-blur">
-                <PinIcon /> Yugo Cartuja, Sevilla
+                <PinIcon /> C. Francisco de Xerez, 41092 Sevilla
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/30 backdrop-blur">
                 <ClockIcon /> 10:30 · 12:00 · 13:30
               </span>
             </div>
+          </div>
 
-            <a
-              href="#reserva"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-coral px-7 py-4 text-lg font-bold text-white shadow-xl shadow-coral/30 transition hover:bg-coral-dark"
-            >
-              Reserva tu plaza
-              <ArrowIcon />
-            </a>
+          {/* Formulario */}
+          <div id="reserva" className="scroll-mt-24">
+            <RegistrationForm
+              heading="Reserva tu visita"
+              subheading="Sábado 4 de julio · plazas limitadas"
+            />
           </div>
         </div>
       </section>
@@ -136,7 +135,7 @@ export default function Home() {
             <DetailCard
               icon={<PinIcon className="h-7 w-7" />}
               label="Lugar"
-              value="Yugo Cartuja, Sevilla"
+              value="C. Francisco de Xerez, 41092 Sevilla"
             />
             <DetailCard
               icon={<ClockIcon className="h-7 w-7" />}
@@ -238,53 +237,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ FORMULARIO ============ */}
-      <section id="reserva" className="scroll-mt-8 bg-lilac-bg py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
-          <div className="grid items-start gap-12 lg:grid-cols-2">
-            <Reveal>
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-coral">
-                Reserva tu plaza
-              </p>
-              <h2 className="mt-4 text-3xl font-bold text-aubergine sm:text-4xl">
-                Completa el formulario y te esperamos
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-aubergine/75">
-                Rellena tus datos para que podamos reservarte una plaza en el
-                horario que prefieras y enviarte toda la información necesaria
-                para tu visita.
-              </p>
-
-              <ul className="mt-8 space-y-4">
-                {[
-                  "Visita las habitaciones y los espacios comunes",
-                  "Conoce el ambiente de la residencia en persona",
-                  "Resuelve todas tus dudas con nuestro equipo",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-aubergine/80">
-                    <CheckBadge />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10 hidden overflow-hidden rounded-xl2 lg:block">
-                <div className="relative aspect-[16/10] w-full">
-                  <Image
-                    src="/images/terraza.jpg"
-                    alt="Estudiantes en la terraza de Yugo Cartuja"
-                    fill
-                    sizes="(max-width: 1024px) 0px, 40vw"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <RegistrationForm />
-            </Reveal>
-          </div>
+      {/* ============ CTA FINAL ============ */}
+      <section className="bg-coral py-16 text-white sm:py-20">
+        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
+          <Reveal>
+            <h2 className="text-3xl font-bold sm:text-4xl">
+              ¿Vienes a conocer tu nuevo hogar?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-lg text-white/90">
+              Reserva tu visita para el sábado 4 de julio. Las plazas son
+              limitadas, así que no lo dejes para el último momento.
+            </p>
+            <a
+              href="#reserva"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-coral shadow-xl transition hover:bg-cream"
+            >
+              Reservar visita
+              <ArrowIcon />
+            </a>
+          </Reveal>
         </div>
       </section>
 
@@ -308,7 +279,7 @@ export default function Home() {
             <div className="text-sm">
               <p className="font-semibold text-white">Yugo Cartuja</p>
               <p className="mt-2 text-white/60">
-                Francisco de Xerez, n.º 2
+                C. Francisco de Xerez
                 <br />
                 41092 Sevilla
               </p>
@@ -381,15 +352,5 @@ function ArrowIcon() {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
-  );
-}
-
-function CheckBadge() {
-  return (
-    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-coral/15 text-coral">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
-        <path d="M20 6 9 17l-5-5" />
-      </svg>
-    </span>
   );
 }

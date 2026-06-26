@@ -7,7 +7,15 @@ const UNIVERSIDADES = ["ETSI", "FCOM", "DTX", "CESUR", "Otros"] as const;
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function RegistrationForm() {
+type RegistrationFormProps = {
+  heading?: string;
+  subheading?: string;
+};
+
+export default function RegistrationForm({
+  heading,
+  subheading,
+}: RegistrationFormProps) {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
@@ -68,7 +76,7 @@ export default function RegistrationForm() {
           </svg>
         </div>
         <h3 className="text-2xl font-bold text-aubergine">
-          ¡Plaza reservada!
+          ¡Visita reservada!
         </h3>
         <p className="mt-3 text-aubergine/70">
           Hemos recibido tu reserva para la jornada de puertas abiertas del{" "}
@@ -94,6 +102,16 @@ export default function RegistrationForm() {
       noValidate
       className="rounded-xl2 bg-white p-6 shadow-xl ring-1 ring-aubergine/10 sm:p-8"
     >
+      {(heading || subheading) && (
+        <div className="mb-6">
+          {heading && (
+            <h2 className="text-2xl font-bold text-aubergine">{heading}</h2>
+          )}
+          {subheading && (
+            <p className="mt-1 text-sm font-medium text-coral">{subheading}</p>
+          )}
+        </div>
+      )}
       <div className="grid gap-5">
         {/* Nombre */}
         <div>
@@ -242,7 +260,7 @@ export default function RegistrationForm() {
               Enviando...
             </>
           ) : (
-            "Reservar mi plaza"
+            "Reservar mi visita"
           )}
         </button>
 
