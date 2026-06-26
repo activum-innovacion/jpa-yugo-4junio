@@ -56,14 +56,10 @@ export default function Home() {
               Te esperamos el 4 de julio
             </h1>
             <p className="mt-5 max-w-lg text-lg text-white/90 drop-shadow-sm sm:text-xl">
-              Ven a conocer Yugo Cartuja, tu posible nuevo hogar durante la etapa
-              universitaria en Sevilla.
+              Visita, reserva y consigue el mayor descuento en tu habitación.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/30 backdrop-blur">
-                <CalendarIcon /> Sábado 4 de julio
-              </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/30 backdrop-blur">
                 <PinIcon /> C. Francisco de Xerez, 41092 Sevilla
               </span>
@@ -77,7 +73,7 @@ export default function Home() {
           <div id="reserva" className="scroll-mt-24">
             <RegistrationForm
               heading="Reserva tu visita"
-              subheading="Sábado 4 de julio · plazas limitadas"
+              subheading="Sábado 4 de julio · Plazas limitadas"
             />
           </div>
         </div>
