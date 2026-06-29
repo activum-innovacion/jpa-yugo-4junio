@@ -39,6 +39,7 @@ el tablero mediante la API de monday. Configura estas variables de entorno:
 | _(constante)_ Tipo de gestión = **Mail** | Tipo de gestión | `color_mm3qmhtv` |
 | _(constante)_ Origen del contacto = **JPA** | Origen del contacto | `color_mm3qd8bq` |
 | _(constante)_ Estado Lead = **Lead Nuevo** | Estado Lead | `color_mm3qa08v` |
+| _(constante)_ Ubicación visita = **Presencial** | Ubicación visita | `color_mm3qyqsn` |
 | _(automático)_ Fecha Entrada = fecha de registro | Fecha Entrada | `date_mm3qyzm1` |
 
 > El horario se guarda como fecha+hora del **4 de julio de 2026**. La hora se

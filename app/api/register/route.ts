@@ -13,6 +13,7 @@ const COLUMN_IDS = {
   tipoGestion: "color_mm3qmhtv", // Tipo de gestión (status)
   origenContacto: "color_mm3qd8bq", // Origen del contacto (status)
   estadoLead: "color_mm3qa08v", // Estado Lead (status)
+  ubicacionVisita: "color_mm3qyqsn", // Ubicación visita (status)
   fechaEntrada: "date_mm3qyzm1", // Fecha Entrada (date)
 } as const;
 
@@ -20,6 +21,7 @@ const COLUMN_IDS = {
 const DEFAULT_TIPO_GESTION = "Mail";
 const DEFAULT_ORIGEN_CONTACTO = "JPA";
 const DEFAULT_ESTADO_LEAD = "Lead Nuevo";
+const DEFAULT_UBICACION_VISITA = "Presencial";
 
 // Fecha del evento (Sábado 4 de julio de 2026)
 const EVENT_DATE = "2026-07-04";
@@ -107,6 +109,7 @@ export async function POST(request: Request) {
     [COLUMN_IDS.tipoGestion]: { label: DEFAULT_TIPO_GESTION },
     [COLUMN_IDS.origenContacto]: { label: DEFAULT_ORIGEN_CONTACTO },
     [COLUMN_IDS.estadoLead]: { label: DEFAULT_ESTADO_LEAD },
+    [COLUMN_IDS.ubicacionVisita]: { label: DEFAULT_UBICACION_VISITA },
     [COLUMN_IDS.fechaEntrada]: { date: fechaEntrada },
   };
 
