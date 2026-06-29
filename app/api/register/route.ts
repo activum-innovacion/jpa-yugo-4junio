@@ -13,6 +13,7 @@ const COLUMN_IDS = {
   tipoGestion: "color_mm3qmhtv", // Tipo de gestión (status)
   origenContacto: "color_mm3qd8bq", // Origen del contacto (status)
   estadoLead: "color_mm3qa08v", // Estado Lead (status)
+  fechaEntrada: "date_mm3qyzm1", // Fecha Entrada (date)
 } as const;
 
 // Valores por defecto para todos los leads de la JPA
@@ -88,6 +89,14 @@ export async function POST(request: Request) {
     );
   }
 
+  // Fecha de registro del lead (fecha local de España, sin hora)
+  const fechaEntrada = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Madrid",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+
   // --- Valores de columna para monday.com ---
   const phoneDigits = telefono.replace(/[^\d+]/g, "");
   const columnValues = {
@@ -98,6 +107,7 @@ export async function POST(request: Request) {
     [COLUMN_IDS.tipoGestion]: { label: DEFAULT_TIPO_GESTION },
     [COLUMN_IDS.origenContacto]: { label: DEFAULT_ORIGEN_CONTACTO },
     [COLUMN_IDS.estadoLead]: { label: DEFAULT_ESTADO_LEAD },
+    [COLUMN_IDS.fechaEntrada]: { date: fechaEntrada },
   };
 
   // create_labels_if_missing crea las etiquetas ETSI/FCOM/DTX/CESUR/Otros en
