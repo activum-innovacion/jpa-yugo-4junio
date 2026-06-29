@@ -16,10 +16,11 @@ export default function Home() {
             className="h-8 w-auto sm:h-9"
           />
           <a
-            href="#reserva"
-            className="rounded-full bg-white/15 px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/40 backdrop-blur transition hover:bg-white hover:text-aubergine"
+            href="https://yugolacartuja.com/"
+            className="inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/40 backdrop-blur transition hover:bg-white hover:text-aubergine"
           >
-            Reservar visita
+            <ArrowLeftIcon />
+            Volver
           </a>
         </div>
       </header>
@@ -73,6 +74,14 @@ export default function Home() {
 }
 
 /* ===================== Iconos ===================== */
+
+function ArrowLeftIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M19 12H5M11 18l-6-6 6-6" />
+    </svg>
+  );
+}
 
 function ClockIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
