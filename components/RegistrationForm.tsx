@@ -1,21 +1,16 @@
 "use client";
 
 import { useId, useState } from "react";
+import { useLang } from "@/components/i18n";
 
 const HORARIOS = ["10:30", "12:00", "13:30"] as const;
 const UNIVERSIDADES = ["ETSI", "FCOM", "DTX", "CESUR", "Otros"] as const;
 
 type Status = "idle" | "loading" | "success" | "error";
 
-type RegistrationFormProps = {
-  heading?: string;
-  subheading?: string;
-};
+export default function RegistrationForm() {
+  const { t } = useLang();
 
-export default function RegistrationForm({
-  heading,
-  subheading,
-}: RegistrationFormProps) {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +19,6 @@ export default function RegistrationForm({
   const [consent, setConsent] = useState(false);
 
   const [status, setStatus] = useState<Status>("idle");
-  const [errorMsg, setErrorMsg] = useState("");
   const [touched, setTouched] = useState(false);
 
   // ids únicos por instancia (puede haber varios formularios en la página)
@@ -39,7 +33,6 @@ export default function RegistrationForm({
     if (!horario || !consent) return;
 
     setStatus("loading");
-    setErrorMsg("");
 
     try {
       const res = await fetch("/api/register", {
@@ -47,19 +40,10 @@ export default function RegistrationForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre, telefono, email, horario, universidad }),
       });
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        throw new Error(data?.error || "No hemos podido enviar tu reserva.");
-      }
+      if (!res.ok) throw new Error("request failed");
       setStatus("success");
-    } catch (err) {
+    } catch {
       setStatus("error");
-      setErrorMsg(
-        err instanceof Error
-          ? err.message
-          : "No hemos podido enviar tu reserva."
-      );
     }
   }
 
@@ -79,23 +63,23 @@ export default function RegistrationForm({
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-aubergine">
-          ¡Visita reservada!
-        </h3>
+        <h3 className="text-2xl font-bold text-aubergine">{t.form.successTitle}</h3>
         <p className="mt-3 text-aubergine/70">
-          Hemos recibido tu reserva para la jornada de puertas abiertas del{" "}
-          <strong>sábado 4 de julio</strong>
+          {t.form.successPre}
+          <strong>{t.form.successDate}</strong>
           {horario && (
             <>
               {" "}
-              a las <strong>{horario} h</strong>
+              {t.form.successAt}{" "}
+              <strong>
+                {horario}
+                {t.form.hSuffix}
+              </strong>
             </>
           )}
-          . Te enviaremos por email toda la información para tu visita.
+          {t.form.successPost}
         </p>
-        <p className="mt-6 text-sm text-aubergine/50">
-          ¡Nos vemos en Yugo Cartuja!
-        </p>
+        <p className="mt-6 text-sm text-aubergine/50">{t.form.successFooter}</p>
       </div>
     );
   }
@@ -106,21 +90,16 @@ export default function RegistrationForm({
       noValidate
       className="rounded-xl2 bg-white p-6 shadow-xl ring-1 ring-aubergine/10 sm:p-8"
     >
-      {(heading || subheading) && (
-        <div className="mb-6">
-          {heading && (
-            <h2 className="text-2xl font-bold text-aubergine">{heading}</h2>
-          )}
-          {subheading && (
-            <p className="mt-1 text-sm font-medium text-coral">{subheading}</p>
-          )}
-        </div>
-      )}
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-aubergine">{t.form.heading}</h2>
+        <p className="mt-1 text-sm font-medium text-coral">{t.form.subheading}</p>
+      </div>
+
       <div className="grid gap-5">
         {/* Nombre */}
         <div>
           <label htmlFor={fid("nombre")} className="mb-1.5 block text-sm font-semibold text-aubergine">
-            Nombre y apellidos
+            {t.form.name}
           </label>
           <input
             id={fid("nombre")}
@@ -130,7 +109,7 @@ export default function RegistrationForm({
             autoComplete="name"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-            placeholder="Tu nombre completo"
+            placeholder={t.form.namePlaceholder}
             className="w-full rounded-xl border border-aubergine/15 bg-cream/40 px-4 py-3 text-aubergine outline-none transition focus:border-aubergine focus:ring-2 focus:ring-aubergine/20"
           />
         </div>
@@ -139,7 +118,7 @@ export default function RegistrationForm({
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor={fid("telefono")} className="mb-1.5 block text-sm font-semibold text-aubergine">
-              Teléfono
+              {t.form.phone}
             </label>
             <input
               id={fid("telefono")}
@@ -150,13 +129,13 @@ export default function RegistrationForm({
               inputMode="tel"
               value={telefono}
               onChange={(e) => setTelefono(e.target.value)}
-              placeholder="600 123 456"
+              placeholder={t.form.phonePlaceholder}
               className="w-full rounded-xl border border-aubergine/15 bg-cream/40 px-4 py-3 text-aubergine outline-none transition focus:border-aubergine focus:ring-2 focus:ring-aubergine/20"
             />
           </div>
           <div>
             <label htmlFor={fid("email")} className="mb-1.5 block text-sm font-semibold text-aubergine">
-              Correo electrónico
+              {t.form.email}
             </label>
             <input
               id={fid("email")}
@@ -166,7 +145,7 @@ export default function RegistrationForm({
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="tucorreo@email.com"
+              placeholder={t.form.emailPlaceholder}
               className="w-full rounded-xl border border-aubergine/15 bg-cream/40 px-4 py-3 text-aubergine outline-none transition focus:border-aubergine focus:ring-2 focus:ring-aubergine/20"
             />
           </div>
@@ -175,7 +154,7 @@ export default function RegistrationForm({
         {/* Horario */}
         <div>
           <span className="mb-1.5 block text-sm font-semibold text-aubergine">
-            Elige tu horario de visita
+            {t.form.schedule}
           </span>
           <div className="grid grid-cols-3 gap-3">
             {HORARIOS.map((h) => {
@@ -192,22 +171,21 @@ export default function RegistrationForm({
                       : "border-aubergine/15 bg-cream/40 text-aubergine hover:border-aubergine/40"
                   }`}
                 >
-                  {h} h
+                  {h}
+                  {t.form.hSuffix}
                 </button>
               );
             })}
           </div>
           {horarioInvalid && (
-            <p className="mt-2 text-sm text-coral-dark">
-              Selecciona un horario para tu visita.
-            </p>
+            <p className="mt-2 text-sm text-coral-dark">{t.form.scheduleError}</p>
           )}
         </div>
 
         {/* Universidad */}
         <div>
           <label htmlFor={fid("universidad")} className="mb-1.5 block text-sm font-semibold text-aubergine">
-            ¿Dónde vas a estudiar?
+            {t.form.university}
           </label>
           <select
             id={fid("universidad")}
@@ -222,7 +200,7 @@ export default function RegistrationForm({
             }}
           >
             <option value="" disabled>
-              Selecciona tu centro
+              {t.form.universityPlaceholder}
             </option>
             {UNIVERSIDADES.map((u) => (
               <option key={u} value={u}>
@@ -241,15 +219,12 @@ export default function RegistrationForm({
             required
             className="mt-0.5 h-5 w-5 shrink-0 rounded border-aubergine/30 text-aubergine accent-aubergine"
           />
-          <span>
-            Acepto que Yugo Cartuja se ponga en contacto conmigo para gestionar mi
-            visita y enviarme información sobre la residencia.
-          </span>
+          <span>{t.form.consent}</span>
         </label>
 
         {status === "error" && (
           <div className="rounded-xl bg-coral/10 px-4 py-3 text-sm font-medium text-coral-dark">
-            {errorMsg} Vuelve a intentarlo o escríbenos directamente.
+            {t.form.error}
           </div>
         )}
 
@@ -261,16 +236,14 @@ export default function RegistrationForm({
           {status === "loading" ? (
             <>
               <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-              Enviando...
+              {t.form.sending}
             </>
           ) : (
-            "Reservar mi visita"
+            t.form.submit
           )}
         </button>
 
-        <p className="text-center text-xs text-aubergine/40">
-          Plazas limitadas
-        </p>
+        <p className="text-center text-xs text-aubergine/40">{t.form.limited}</p>
       </div>
     </form>
   );
