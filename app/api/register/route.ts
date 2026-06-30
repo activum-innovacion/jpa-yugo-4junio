@@ -10,6 +10,7 @@ const COLUMN_IDS = {
   email: "email_mm3q9xk", // E-mail
   visita: "date_mm3qtz5n", // Fecha y hora inicio visita
   centroEstudios: "dropdown_mm3qh2w7", // Centro Estudios
+  idiomaPreferido: "dropdown_mm3qwkc7", // Idioma preferido (dropdown)
   tipoGestion: "color_mm3qmhtv", // Tipo de gestión (status)
   origenContacto: "color_mm3qd8bq", // Origen del contacto (status)
   estadoLead: "color_mm3qa08v", // Estado Lead (status)
@@ -38,12 +39,19 @@ const HORARIO_TO_UTC: Record<string, string> = {
 const HORARIOS = Object.keys(HORARIO_TO_UTC);
 const UNIVERSIDADES = ["ETSI", "FCOM", "DTX", "CESUR", "Otros"];
 
+// Idioma del formulario -> etiqueta de la columna "Idioma preferido"
+const IDIOMA_TO_LABEL: Record<string, string> = {
+  es: "Castellano",
+  en: "Inglés",
+};
+
 type Payload = {
   nombre?: string;
   telefono?: string;
   email?: string;
   horario?: string;
   universidad?: string;
+  idioma?: string;
 };
 
 function isEmail(value: string) {
@@ -63,6 +71,7 @@ export async function POST(request: Request) {
   const email = (body.email || "").trim();
   const horario = (body.horario || "").trim();
   const universidad = (body.universidad || "").trim();
+  const idiomaLabel = IDIOMA_TO_LABEL[(body.idioma || "").trim().toLowerCase()] || "Castellano";
 
   // --- Validación de servidor ---
   if (!nombre) {
@@ -106,6 +115,7 @@ export async function POST(request: Request) {
     [COLUMN_IDS.email]: { email, text: email },
     [COLUMN_IDS.visita]: { date: EVENT_DATE, time: HORARIO_TO_UTC[horario] },
     [COLUMN_IDS.centroEstudios]: { labels: [uni] },
+    [COLUMN_IDS.idiomaPreferido]: { labels: [idiomaLabel] },
     [COLUMN_IDS.tipoGestion]: { label: DEFAULT_TIPO_GESTION },
     [COLUMN_IDS.origenContacto]: { label: DEFAULT_ORIGEN_CONTACTO },
     [COLUMN_IDS.estadoLead]: { label: DEFAULT_ESTADO_LEAD },

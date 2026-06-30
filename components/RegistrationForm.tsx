@@ -9,7 +9,7 @@ const UNIVERSIDADES = ["ETSI", "FCOM", "DTX", "CESUR", "Otros"] as const;
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function RegistrationForm() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -38,7 +38,7 @@ export default function RegistrationForm() {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, telefono, email, horario, universidad }),
+        body: JSON.stringify({ nombre, telefono, email, horario, universidad, idioma: lang }),
       });
       if (!res.ok) throw new Error("request failed");
       setStatus("success");
