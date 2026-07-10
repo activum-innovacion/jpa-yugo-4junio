@@ -55,7 +55,7 @@ export default function Landing() {
             <p className="mt-5 max-w-lg text-lg font-semibold text-white/90 drop-shadow-sm sm:text-xl">
               {t.hero.subtitle}
             </p>
-            <h1 className="mt-3 text-4xl font-extrabold leading-[1.05] text-white drop-shadow-sm sm:text-6xl">
+            <h1 className="mt-3 whitespace-pre-line text-4xl font-extrabold leading-[1.05] text-white drop-shadow-sm sm:text-6xl">
               {t.hero.title}
             </h1>
 
