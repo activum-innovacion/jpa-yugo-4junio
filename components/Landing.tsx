@@ -52,12 +52,12 @@ export default function Landing() {
             <span className="inline-flex items-center gap-2 rounded-full bg-coral px-4 py-1.5 text-sm font-semibold text-white shadow-lg">
               {t.hero.badge}
             </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] text-white drop-shadow-sm sm:text-6xl">
-              {t.hero.title}
-            </h1>
-            <p className="mt-5 max-w-lg text-lg text-white/90 drop-shadow-sm sm:text-xl">
+            <p className="mt-5 max-w-lg text-lg font-semibold text-white/90 drop-shadow-sm sm:text-xl">
               {t.hero.subtitle}
             </p>
+            <h1 className="mt-3 text-4xl font-extrabold leading-[1.05] text-white drop-shadow-sm sm:text-6xl">
+              {t.hero.title}
+            </h1>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/30 backdrop-blur">

@@ -14,8 +14,8 @@ const es = {
   nav: { back: "Volver" },
   hero: {
     badge: "Jornada de Puertas Abiertas",
-    title: "Te esperamos el 17 de julio",
-    subtitle: "Visita, reserva y consigue el mayor descuento en tu habitación.",
+    title: "Visítanos el 17 de julio",
+    subtitle: "Última oportunidad",
     address: "C. Francisco de Xerez, 41092 Sevilla",
     times: "10:30 · 12:00 · 13:30",
   },
@@ -52,8 +52,8 @@ const en: typeof es = {
   nav: { back: "Back" },
   hero: {
     badge: "Open House",
-    title: "See you on July 17th",
-    subtitle: "Visit, book and get the biggest discount on your room.",
+    title: "Visit us on July 17th",
+    subtitle: "Last chance",
     address: "C. Francisco de Xerez, 41092 Sevilla",
     times: "10:30 · 12:00 · 13:30",
   },
