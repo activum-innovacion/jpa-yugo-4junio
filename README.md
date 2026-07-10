@@ -3,7 +3,7 @@
 Landing de la jornada de puertas abiertas de **Yugo Cartuja** (residencia de
 estudiantes en Sevilla), con formulario de reserva conectado a **monday.com**.
 
-- **Evento:** Sábado 4 de julio · Horarios 10:30 / 12:00 / 13:30
+- **Evento:** Viernes 17 de julio · Horarios 10:30 / 12:00 / 13:30
 - **Stack:** Next.js (App Router) + Tailwind CSS v4, desplegable en Vercel.
 
 ## Desarrollo local
@@ -43,7 +43,7 @@ el tablero mediante la API de monday. Configura estas variables de entorno:
 | _(constante)_ Ubicación visita = **Presencial** | Ubicación visita | `color_mm3qyqsn` |
 | _(automático)_ Fecha Entrada = fecha de registro | Fecha Entrada | `date_mm3qyzm1` |
 
-> El horario se guarda como fecha+hora del **4 de julio de 2026**. La hora se
+> El horario se guarda como fecha+hora del **17 de julio de 2026**. La hora se
 > envía en UTC (la cuenta de monday es CEST/UTC+2 en julio) para que se muestre
 > la hora local correcta. Las etiquetas de "Centro Estudios" se crean
 > automáticamente si no existen (`create_labels_if_missing`).

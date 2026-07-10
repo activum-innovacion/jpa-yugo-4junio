@@ -24,8 +24,8 @@ const DEFAULT_ORIGEN_CONTACTO = "JPA";
 const DEFAULT_ESTADO_LEAD = "Lead Nuevo";
 const DEFAULT_UBICACION_VISITA = "Presencial";
 
-// Fecha del evento (Sábado 4 de julio de 2026)
-const EVENT_DATE = "2026-07-04";
+// Fecha del evento (Viernes 17 de julio de 2026)
+const EVENT_DATE = "2026-07-17";
 
 // La API de monday interpreta la hora como UTC y la muestra en la zona horaria
 // de la cuenta. En julio España es CEST (UTC+2), así que enviamos la hora en UTC

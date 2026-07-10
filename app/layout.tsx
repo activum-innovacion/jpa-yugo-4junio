@@ -24,11 +24,11 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Puertas Abiertas en Yugo Cartuja | Sábado 4 de julio",
+  title: "Puertas Abiertas en Yugo Cartuja | Viernes 17 de julio",
   description:
-    "Ven a conocer Yugo Cartuja en nuestra jornada de puertas abiertas del sábado 4 de julio en Sevilla. Visita las habitaciones, descubre los espacios comunes y reserva tu plaza. Plazas limitadas.",
+    "Ven a conocer Yugo Cartuja en nuestra jornada de puertas abiertas del viernes 17 de julio en Sevilla. Visita las habitaciones, descubre los espacios comunes y reserva tu plaza. Plazas limitadas.",
   openGraph: {
-    title: "Puertas Abiertas en Yugo Cartuja | Sábado 4 de julio",
+    title: "Puertas Abiertas en Yugo Cartuja | Viernes 17 de julio",
     description:
       "Visita la residencia, conoce los espacios comunes y reserva tu plaza para la jornada de puertas abiertas en Sevilla.",
     type: "website",
