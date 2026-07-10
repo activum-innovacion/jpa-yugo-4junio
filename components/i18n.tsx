@@ -15,7 +15,7 @@ const es = {
   hero: {
     badge: "Jornada de Puertas Abiertas",
     title: "Visítanos el\n17 de julio",
-    subtitle: "Última oportunidad",
+    subtitle: "Última oportunidad para conseguir un mejor precio",
     address: "C. Francisco de Xerez, 41092 Sevilla",
     times: "10:30 · 12:00 · 13:30",
   },
@@ -53,7 +53,7 @@ const en: typeof es = {
   hero: {
     badge: "Open House",
     title: "Visit us on\nJuly 17th",
-    subtitle: "Last chance",
+    subtitle: "Last chance to get a better price",
     address: "C. Francisco de Xerez, 41092 Sevilla",
     times: "10:30 · 12:00 · 13:30",
   },
