@@ -11,6 +11,7 @@ const COLUMN_IDS = {
   visita: "date_mm3qtz5n", // Fecha y hora inicio visita
   centroEstudios: "dropdown_mm3qh2w7", // Centro Estudios
   idiomaPreferido: "dropdown_mm3qwkc7", // Idioma preferido (dropdown)
+  campana: "dropdown_mm50d5ca", // Campaña (dropdown)
   tipoGestion: "color_mm3qmhtv", // Tipo de gestión (status)
   origenContacto: "color_mm3qd8bq", // Origen del contacto (status)
   estadoLead: "color_mm3qa08v", // Estado Lead (status)
@@ -23,6 +24,7 @@ const DEFAULT_TIPO_GESTION = "Mail";
 const DEFAULT_ORIGEN_CONTACTO = "JPA";
 const DEFAULT_ESTADO_LEAD = "Lead Nuevo";
 const DEFAULT_UBICACION_VISITA = "Presencial";
+const DEFAULT_CAMPANA = "Landing JPA 17/07/26";
 
 // Fecha del evento (Viernes 17 de julio de 2026)
 const EVENT_DATE = "2026-07-17";
@@ -116,6 +118,7 @@ export async function POST(request: Request) {
     [COLUMN_IDS.visita]: { date: EVENT_DATE, time: HORARIO_TO_UTC[horario] },
     [COLUMN_IDS.centroEstudios]: { labels: [uni] },
     [COLUMN_IDS.idiomaPreferido]: { labels: [idiomaLabel] },
+    [COLUMN_IDS.campana]: { labels: [DEFAULT_CAMPANA] },
     [COLUMN_IDS.tipoGestion]: { label: DEFAULT_TIPO_GESTION },
     [COLUMN_IDS.origenContacto]: { label: DEFAULT_ORIGEN_CONTACTO },
     [COLUMN_IDS.estadoLead]: { label: DEFAULT_ESTADO_LEAD },

@@ -37,6 +37,7 @@ el tablero mediante la API de monday. Configura estas variables de entorno:
 | Horario | Fecha y hora inicio visita | `date_mm3qtz5n` |
 | Universidad | Centro Estudios | `dropdown_mm3qh2w7` |
 | Idioma del selector (ES/EN) | Idioma preferido (Castellano/Inglés) | `dropdown_mm3qwkc7` |
+| _(constante)_ Campaña = **Landing JPA 17/07/26** | Campaña | `dropdown_mm50d5ca` |
 | _(constante)_ Tipo de gestión = **Mail** | Tipo de gestión | `color_mm3qmhtv` |
 | _(constante)_ Origen del contacto = **JPA** | Origen del contacto | `color_mm3qd8bq` |
 | _(constante)_ Estado Lead = **Lead Nuevo** | Estado Lead | `color_mm3qa08v` |
