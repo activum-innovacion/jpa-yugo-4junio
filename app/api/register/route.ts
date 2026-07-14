@@ -22,7 +22,7 @@ const COLUMN_IDS = {
 // Valores por defecto para todos los leads de la JPA
 const DEFAULT_TIPO_GESTION = "Mail";
 const DEFAULT_ORIGEN_CONTACTO = "JPA";
-const DEFAULT_ESTADO_LEAD = "Lead Nuevo";
+const DEFAULT_ESTADO_LEAD = "Visita Agendada";
 const DEFAULT_UBICACION_VISITA = "Presencial";
 const DEFAULT_CAMPANA = "Landing JPA 17/07/26";
 
